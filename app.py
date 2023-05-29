@@ -12,9 +12,6 @@ db_config = {
     'database': 'mydatabase',  # Name of the database
 }
 
-# Create an async connection pool
-pool = edgedb.create_async_pool(**db_config)
-
 
 # Route for the dashboard page
 @app.route('/')
@@ -30,7 +27,7 @@ async def add_customer():
         customer_email_or_phone = request.form['customerEmail']
         customer_address = request.form['customerAddress']
 
-        async with pool.acquire() as conn:
+        async with edgedb.async_connect(**db_config) as conn:
             # Check if the email or phone already exists in the database
             query = """
                 SELECT (
