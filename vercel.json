@@ -1,25 +1,20 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "app.py",
-        "use": "@vercel/python"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/app.py"
-      }
-    ],
-    "env": {
-      "SQLALCHEMY_DATABASE_URI": "<your-postgresql-connection-string>",
-      "FLASK_ENV": "production",
-      "FLASK_APP": "app.py"
-    },
-    "functions": {
-      "api/**/*.py": {
-        "runtime": "@vercel/python"
-      }
+  "version": 2,
+  "builds": [
+    {
+      "src": "app.py",
+      "use": "@vercel/python"
     }
-  }  
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/app.py"
+    }
+  ],
+  "env": {
+    "SQLALCHEMY_DATABASE_URI": "<your-postgresql-connection-string>",
+    "FLASK_ENV": "production",
+    "FLASK_APP": "app.py"
+  }
+}
