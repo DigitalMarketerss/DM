@@ -7,9 +7,9 @@ app = Flask(__name__)
 db_config = {
     'host': 'localhost',
     'port': 5656,  # EdgeDB port
-    'user': 'myuser',  # EdgeDB username
-    'password': 'mypassword',  # EdgeDB password
-    'database': 'mydatabase',  # Name of the database
+    'user': 'root',  # EdgeDB username
+    'password': '',  # EdgeDB password
+    'database': 'billing',  # Name of the database
 }
 
 
