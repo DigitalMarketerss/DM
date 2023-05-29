@@ -1,26 +1,25 @@
 from flask import Flask, redirect, render_template, request, session, url_for, flash
-import mysql.connector
+import edgedb
 
 app = Flask(__name__)
 
-
-# MySQL Configuration
+# EdgeDB Configuration
 db_config = {
     'host': 'localhost',
-    'user': 'root',  # MySQL username
-    'password': '',  # MySQL password
-    'database': 'billing',  # Name of the database
-    'auth_plugin': 'mysql_native_password'
+    'port': 5656,  # EdgeDB port
+    'user': 'myuser',  # EdgeDB username
+    'password': 'mypassword',  # EdgeDB password
+    'database': 'mydatabase',  # Name of the database
 }
 
-conn = mysql.connector.connect(**db_config)
+# Connect to the EdgeDB instance
+conn = edgedb.connect(**db_config)
 
 
 # Route for the dashboard page
 @app.route('/')
 def dashboard():
     return render_template('dashboard.html')
-   
 
 
 # Route for adding a customer
@@ -31,33 +30,43 @@ def add_customer():
         customer_email_or_phone = request.form['customerEmail']
         customer_address = request.form['customerAddress']
 
-        cursor = conn.cursor()
-
         # Check if the email or phone already exists in the database
-        query = "SELECT COUNT(*) FROM customers WHERE EmailorPhone = %s"
-        cursor.execute(query, (customer_email_or_phone,))
-        count = cursor.fetchone()[0]
+        query = """
+            SELECT (
+                SELECT count(customers)
+                FILTER customers.EmailorPhone = <str>$email_or_phone
+            ) > 0
+        """
+        exists = conn.query_single(query, email_or_phone=customer_email_or_phone)
 
-        if count > 0:
+        if exists:
             flash('Customer with the same email or phone already exists')
             return redirect(url_for('dashboard'))
 
-        # Prepare the SQL query to insert customer data
-        query = "INSERT INTO customers (Bill Number, InstagramID, Address) VALUES (%s, %s, %s)"
-        values = (customer_name, customer_email_or_phone, customer_address)
+        # Prepare the EdgeQL query to insert customer data
+        query = """
+            INSERT customers {
+                BillNumber := <str>$bill_number,
+                InstagramID := <str>$email_or_phone,
+                Address := <str>$address
+            }
+        """
+        values = {
+            'bill_number': customer_name,
+            'email_or_phone': customer_email_or_phone,
+            'address': customer_address
+        }
 
         try:
             # Execute the query
-            cursor.execute(query, values)
+            conn.execute(query, values)
             conn.commit()
             flash('Customer added successfully')
         except Exception as e:
             conn.rollback()
             flash('Error adding customer: {}'.format(str(e)))
 
-        cursor.close()
         return redirect(url_for('dashboard'))
-    
 
 
 if __name__ == "__main__":

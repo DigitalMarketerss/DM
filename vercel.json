@@ -13,8 +13,11 @@
     }
   ],
   "env": {
-    "SQLALCHEMY_DATABASE_URI": "<your-postgresql-connection-string>",
     "FLASK_ENV": "production",
-    "FLASK_APP": "app.py"
+    "FLASK_APP": "app.py",
+    "DB_HOST": "@your-postgres-host",
+    "DB_USER": "@your-postgres-user",
+    "DB_PASSWORD": "@your-postgres-password",
+    "DB_NAME": "@your-postgres-database"
   }
 }
