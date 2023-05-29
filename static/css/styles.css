@@ -1,0 +1,264 @@
+/* styles.css */
+
+html {
+  font-size: 62.5%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+input {
+  border: none;
+}
+
+.frame-1 {
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+
+.frame-1 .header {
+  box-sizing: border-box;
+  padding: 1.3rem 10%;
+  width: 100%;
+  height: 7rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.99);
+  background-color: #f51c1c;
+  flex-shrink: 0;
+}
+
+.frame-1 .header .billing-name {
+  margin-right: 5%;
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #ffffff;
+  font-family: Poppins, 'Source Sans Pro';
+  white-space: nowrap;
+}
+
+.frame-1 .header .Logout {
+  width: 12.7rem;
+  height: 100%;
+  font-size: 2.3rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #ffffff;
+  font-family: Poppins, 'Source Sans Pro';
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000;
+  border-radius: 2.7rem;
+}
+
+.frame-1 .Site-body {
+  position: relative;
+  width: 100%;
+  height: 55.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #000000;
+  font-family: Poppins, 'Source Sans Pro';
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('/static/img/billing.jpg');
+  flex-shrink: 0;
+}
+
+.frame-1 .Site-body .Site-body-color {
+  font-size: 6.4rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #f81414;
+  font-family: Poppins, 'Source Sans Pro';
+}
+
+
+
+body {
+  width: 100%;
+
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  text-align: center;
+}
+
+form {
+  margin-bottom: 30px;
+}
+
+
+#customerForm {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  transform: translate(-50%, -50%);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 10px;
+}
+
+#customerName,
+#customerEmail,
+#customerAddress {
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid white;
+  padding: 10px;
+  margin-bottom: 15px;
+  color: #fff;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 10px;
+
+
+}
+
+#invoiceForm {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 2rem;
+}
+
+button {
+  border: 20px;
+  padding: 10px 20px;
+  background: rgb(133, 18, 104);
+  color: #fff;
+  margin-top: 20px;
+  border: none;
+  outline: none;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+}
+
+input::placeholder {
+  color: rgb(253, 252, 252);
+}
+
+input:focus {
+  border: none;
+  outline: none;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+}
+
+button:active {
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #252525;
+}
+
+
+
+
+
+
+
+/* input[type="text"],
+  input[type="number"],
+  input[type="date"] {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    margin: 0 auto 10px;
+    display: block;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  button {
+    width: 100%;
+    
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  #lineItems {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .line-item {
+    margin-bottom: 10px;
+  }
+  
+  .remove-item {
+    width: 100%;
+    padding: 8px 15px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #invoiceTotal {
+    margin-top: 20px;
+  }
+  
+  .invoiceTotal h3 {
+    margin: 10px 0;
+  } */
